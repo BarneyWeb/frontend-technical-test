@@ -18,6 +18,8 @@ your choices would be appreciated.
 
 ![](./design/screens.png)
 
+Here is the [Figma file](https://www.figma.com/file/SiPUNLTh3QT9QDaVUnigwR/).
+
 ## Bonus 1
 
 Make sure that stress-testing the UI won't break anything. E.g., if a
