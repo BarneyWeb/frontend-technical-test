@@ -61,3 +61,6 @@ the [Swagger documentation](http://localhost:1337/documentation/).
 # Client
 
 The `./client` directory is all yours.
+
+Do what you think is best in terms of directory architecture and
+dependencies. 🙂
