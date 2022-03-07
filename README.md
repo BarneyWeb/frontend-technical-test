@@ -38,10 +38,10 @@ We love creativity and technical challenges.
 
 If you are out of ideas, here are some thoughts:
 
--   Our clients are professionnals that will uses our app as a working
-    tool. We try to save them time by removing repetitive action.
-    What if a user searches for "islands", click on a result to see
-    its population and uses the browser's history back button to go
+-   Our clients are professionals who use our app as a working tool.
+    We try to save them time by removing repetitive actions. What if
+    a user searches for "islands", clicks on a result to see its
+    population, and uses the browser's history back button to go
     back to the list?
 
 # API
