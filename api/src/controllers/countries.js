@@ -1,5 +1,9 @@
+const { sleep, sortByKey } = require("../utils")
+const removeAccents = require("remove-accents")
+
+// List of countries with searchable name
 const COUNTRIES = require("../../data/countries.json")
-const { sleep } = require("../utils")
+COUNTRIES.forEach((c) => (c._searchable = removeAccents(c.name).toLowerCase()))
 
 const countryController = {}
 
@@ -12,6 +16,8 @@ countryController.getCountries = async (req, res) => {
 	let offset = parseInt(req.query.offset) || 0
 	offset = Math.max(0, offset)
 	let search = (req.query.search || "").toLowerCase()
+	let order = (req.query.order || "").toLowerCase()
+	order = ["asc", "desc"].includes(order) ? order : "asc"
 
 	// List
 	let results = COUNTRIES
@@ -24,8 +30,14 @@ countryController.getCountries = async (req, res) => {
 	// Total (after filtering)
 	const total = results.length
 
+	// Sort
+	sortByKey(results, "_searchable", order === "desc")
+
 	// Pagination
 	results = results.slice(offset, offset + limit)
+
+	// Filter keys to return as result
+	results = results.map((c) => ({ name: c.name, code: c.code }))
 
 	// Response
 	res.json({
@@ -33,6 +45,7 @@ countryController.getCountries = async (req, res) => {
 		offset,
 		limit,
 		total,
+		order,
 	})
 }
 
