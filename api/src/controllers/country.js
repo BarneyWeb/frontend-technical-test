@@ -8,7 +8,7 @@ COUNTRIES.forEach((c) => (c._searchable = removeAccents(c.name).toLowerCase()))
 const countryController = {}
 
 countryController.getCountries = async (req, res) => {
-	await sleep(10, 300)
+	// await sleep(50, 500)
 
 	// Options
 	let limit = parseInt(req.query.limit) || 10
@@ -50,7 +50,7 @@ countryController.getCountries = async (req, res) => {
 }
 
 countryController.getCountryByCode = async (req, res) => {
-	await sleep(10, 300)
+	// await sleep(50, 500)
 
 	// query the data
 	const countryCode = (req.params.countryCode || "").toUpperCase()
@@ -64,7 +64,10 @@ countryController.getCountryByCode = async (req, res) => {
 
 	// response
 	res.contentType("application/json").json({
-		...country,
+		name: country.name,
+		code: country.code,
+		surface: country.surface,
+		population: country.population,
 	})
 }
 

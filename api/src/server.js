@@ -1,5 +1,7 @@
 const express = require("express")
-const countryController = require("./controllers/countries")
+const swaggerUi = require("swagger-ui-express")
+const swaggerDocument = require("../docs/swagger.json")
+const countryController = require("./controllers/country")
 
 /* -------------------------
 	SETUP EXPRESS
@@ -7,6 +9,12 @@ const countryController = require("./controllers/countries")
 
 const app = express()
 app.set("json spaces", 2)
+
+/* -------------------------
+	SWAGGER
+------------------------- */
+
+app.use("/documentation", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 /* -------------------------
 	MIDDLEWARE
@@ -39,11 +47,11 @@ app.use((req, res, next) => {
 
 app.get("/", (req, res) => res.json({ message: "Welcome" }))
 
-app.get("/countries", (req, res, next) => {
+app.get("/country", (req, res, next) => {
 	countryController.getCountries(req, res).catch((err) => next(err))
 })
 
-app.get("/countries/:countryCode", (req, res, next) => {
+app.get("/country/:countryCode", (req, res, next) => {
 	countryController.getCountryByCode(req, res).catch((err) => next(err))
 })
 
@@ -68,7 +76,7 @@ app.use((err, req, res, next) => {
 	START
 ------------------------- */
 
-app.listen(3000, (error) => {
+app.listen(1337, (error) => {
 	if (error) console.error(error)
 	else console.info("API started 👌")
 })

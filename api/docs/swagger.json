@@ -1,0 +1,168 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Viceversa frontend technical test",
+		"version": "1.0.0"
+	},
+	"tags": [
+		{
+			"name": "Countries"
+		}
+	],
+	"schemes": [
+		"http"
+	],
+	"paths": {
+		"/country": {
+			"get": {
+				"tags": [
+					"Countries"
+				],
+				"summary": "List of countries",
+				"description": "",
+				"operationId": "placeOrder",
+				"produces": "application/json",
+				"parameters": [
+					{
+						"name": "search",
+						"type": "string",
+						"required": false,
+						"in": "query"
+					},
+					{
+						"name": "order",
+						"type": "string",
+						"enum": [
+							"asc",
+							"desc"
+						],
+						"default": "asc",
+						"required": false,
+						"in": "query"
+					},
+					{
+						"name": "limit",
+						"type": "integer",
+						"required": false,
+						"default": 10,
+						"in": "query"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "The response",
+						"schema": {
+							"$ref": "#/definitions/CountryList"
+						}
+					}
+				}
+			}
+		},
+		"/country/{countryCode}": {
+			"get": {
+				"tags": [
+					"Countries"
+				],
+				"summary": "Detail of a country.",
+				"description": "",
+				"operationId": "placeOrder",
+				"produces": "application/json",
+				"parameters": [
+					{
+						"name": "countryCode",
+						"type": "string",
+						"required": true,
+						"in": "path"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "The response",
+						"schema": {
+							"$ref": "#/definitions/Country"
+						}
+					},
+					"404": {
+						"description": "Error",
+						"schema": {
+							"$ref": "#/definitions/APIError"
+						}
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"CountryList": {
+			"type": "object",
+			"properties": {
+				"results": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string",
+								"example": "France"
+							},
+							"code": {
+								"type": "string",
+								"example": "FR"
+							}
+						}
+					}
+				},
+				"offset": {
+					"type": "integer",
+					"example": 0
+				},
+				"limit": {
+					"type": "integer",
+					"example": 10
+				},
+				"total": {
+					"type": "integer",
+					"example": 234
+				},
+				"order": {
+					"type": "string",
+					"example": "asc"
+				}
+			}
+		},
+		"Country": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string",
+					"example": "France"
+				},
+				"code": {
+					"type": "string",
+					"example": "FR"
+				},
+				"surface": {
+					"type": "string",
+					"example": "547030"
+				},
+				"population": {
+					"type": "string",
+					"example": "60876136"
+				}
+			}
+		},
+		"APIError": {
+			"type": "object",
+			"properties": {
+				"error": {
+					"type": "string",
+					"example": "Country not found."
+				}
+			}
+		}
+	},
+	"externalDocs": {
+		"description": "Find out more about Swagger",
+		"url": "http://swagger.io"
+	}
+}
