@@ -30,8 +30,15 @@ display the right state in the end.
 ## Bonus 2
 
 Our infrastructure could slow down or even crash (sh\*t happens
-`¯\_(ツ)\_/¯`). Make sure the user can understand what is happening if
-it's the case.
+`¯\_(ツ)\_/¯`):
+
+-   Make sure the user can understand what is happening if the
+    API fails or takes a long time to answer.
+-   In terms of optimization, you can spare our API/DB from
+    unnecessary queries. When a user types Islands in the search,
+    you can delay the queries (not too much so the user wouldn't
+    notice) instead of sending queries for I, then Is, Isl, Islan,
+    Island, and finally Islands.
 
 ## Do you want to make the app even better?
 
@@ -42,7 +49,7 @@ If you are out of ideas, here are some thoughts:
 
 -   Our clients are professionals who use our app as a working tool.
     We try to save them time by removing repetitive actions. What if
-    a user searches for "islands", clicks on a result to see its
+    a user searches for `Islands`, clicks on a result to see its
     population, and uses the browser's history back button to go
     back to the list?
 

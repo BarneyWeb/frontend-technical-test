@@ -38,7 +38,8 @@ app.use((req, res, next) => {
 		)
 	})
 
-	next()
+	// Random response time to emulate unpredictable infra
+	setTimeout(next, 100 + 500 * Math.random())
 })
 
 /* -------------------------
