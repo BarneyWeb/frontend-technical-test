@@ -35,10 +35,10 @@ Our infrastructure could slow down or even crash (sh\*t happens
 -   Make sure the user can understand what is happening if the
     API fails or takes a long time to answer.
 -   In terms of optimization, you can spare our API/DB from
-    unnecessary queries. When a user types Islands in the search,
+    unnecessary queries. When a user types `Islands` in the search,
     you can delay the queries (not too much so the user wouldn't
-    notice) instead of sending queries for I, then Is, Isl, Islan,
-    Island, and finally Islands.
+    notice) instead of sending queries for `I`, then `Is`, `Isl`,
+    `Islan`, `Island`, and finally `Islands`.
 
 ## Do you want to make the app even better?
 
